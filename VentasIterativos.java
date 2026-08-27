@@ -45,9 +45,30 @@ public class VentasIterativos {
             
         } while (finalizarCompra);
 
+        double totalBruto = valorBrutoBasico + valorBrutoMedio + valorBrutoPremium;
+        int totalProductos= cantidadBasico + cantidadMedio + cantidadPremium;
         
-              
+        if((totalProductos==0)) {System.out.println("No ha ingresado ningun producto ");
+           
+        }
+        else if (totalBruto>COMPRA_APLICABLE) {
 
+        double descuentoCompra=(totalBruto*PORCENTAJE_DESCUENTO);
+        double ivaAplicadoDescuento=(totalBruto-descuentoCompra)*IVA;
+        double valorTotalCompra=((totalBruto-descuentoCompra+ivaAplicadoDescuento));
+         System.out.println("su descuento fue de : "+ descuentoCompra);
+         System.out.println("El 19% de IVA es: " + ivaAplicadoDescuento );
+         System.out.println("El valor total de su compra es: " + valorTotalCompra); 
+        }else{
+        double ivaAplicado=totalBruto*IVA;
+        System.out.println("El 19% de IVA es: " + ivaAplicado);
+              System.out.println("El valor total de su compra es: " + (totalBruto + ivaAplicado));}
+     if (totalProductos>0) {
+     
+        double porcentajePremium=((double)cantidadPremium/(double)totalProductos)*PORCIENTO;
+        System.out.println("El porcentaje de productos premium es: " + porcentajePremium); }  
+            
+ 
         
         leer.close();
     }
